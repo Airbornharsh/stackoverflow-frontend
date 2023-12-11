@@ -1,9 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#F3C614',
+        secondary: '#353535',
+        danger: '#e3342f',
+        authBackground: '#f1f2f3',
+        white: '#ffffff',
+        navBarBorder: '#e7700d',
+        buttonBlue: "#1b75d0",
+      },
+    },
   },
   plugins: [],
-}
-
+};

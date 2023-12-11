@@ -3,9 +3,11 @@ import BrowserContainer from './Routes';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <BrowserContainer />
-    </BrowserRouter>
+    <div className='w-screen h-screen'>
+      <BrowserRouter>
+        <BrowserContainer />
+      </BrowserRouter>
+    </div>
   );
 };
 
