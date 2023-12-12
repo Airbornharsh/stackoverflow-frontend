@@ -1,13 +1,16 @@
 import { BrowserRouter } from 'react-router-dom';
 import BrowserContainer from './Routes';
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
-    <div className='w-screen h-screen'>
-      <BrowserRouter>
-        <BrowserContainer />
-      </BrowserRouter>
-    </div>
+    <AuthProvider>
+      <div className="h-screen w-screen">
+        <BrowserRouter>
+          <BrowserContainer />
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 };
 

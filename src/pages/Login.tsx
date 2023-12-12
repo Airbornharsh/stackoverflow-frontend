@@ -1,15 +1,22 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FaStackOverflow } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/firebase';
+import { useContext } from 'react';
+import AuthContext from '../context/AuthContext';
 
 const Login = () => {
-  
+  const AuthCtx = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleGoogleSignIn = async () => {
     try {
-      const user = await signInWithPopup(auth, new GoogleAuthProvider());
-      console.log(user);
+      await signInWithPopup(auth, new GoogleAuthProvider());
+
+      AuthCtx.setUser();
+
+      navigate('/');
     } catch (e) {
       console.error(e);
     }
