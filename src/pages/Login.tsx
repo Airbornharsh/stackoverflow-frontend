@@ -1,10 +1,18 @@
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { FaStackOverflow } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
+import { auth } from '../config/firebase';
 
 const Login = () => {
-  const handleGoogleSignIn = () => {
-    console.log('Google Sign In');
+  
+  const handleGoogleSignIn = async () => {
+    try {
+      const user = await signInWithPopup(auth, new GoogleAuthProvider());
+      console.log(user);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -37,7 +45,7 @@ const Login = () => {
             Log In
           </button>
         </form>
-        <div className="flex flex-col items-center text-[0.81rem] gap-3 mt-4">
+        <div className="mt-4 flex flex-col items-center gap-3 text-[0.81rem]">
           <div className="flex gap-2">
             <p>Don't have an account?</p>
             <Link to={'/auth/register'} className="text-buttonBlue">
